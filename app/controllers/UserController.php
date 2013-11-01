@@ -4,7 +4,8 @@ class UserController extends BaseController {
 
 	public function loginHandler()
 	{
-		// Process login here
+		$input = Input::all();
+		dd($input);
 	}
 	
 	public function showLoginPage()
