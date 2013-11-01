@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-	{{ Form::open(array('route' => 'user/loginHandler', 'method' => 'post')) }}
+	{{ Form::open(array('route' => 'login', 'method' => 'post')) }}
 		{{ Form::label('username', 'Username') }}
 		{{ Form::text('username', Input::old('username')) }}
 		{{ Form::label('password', 'Password') }}

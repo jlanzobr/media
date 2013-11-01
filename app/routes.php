@@ -11,7 +11,8 @@
 |
 */
 
-Route::get('/', 'HomeController@getIndex');
 
-Route::get('login', 'UserController@showLoginPage');
-Route::post('login', 'UserController@loginHandler');
+Route::get('/', array('as'=>'/', 'uses'=> 'HomeController@getIndex'));
+
+Route::get('login', array('as'=>'login', 'uses'=> 'UserController@showLoginPage'));
+Route::post('login', array('as'=>'login', 'uses'=> 'UserController@loginHandler'));

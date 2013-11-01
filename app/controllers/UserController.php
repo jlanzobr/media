@@ -1,7 +1,7 @@
 <?php
 
 class UserController extends BaseController {
-	
+
 	public function loginHandler()
 	{
 		// Process login here
