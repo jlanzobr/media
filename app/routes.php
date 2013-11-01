@@ -12,3 +12,6 @@
 */
 
 Route::get('/', 'HomeController@getIndex');
+
+Route::get('login', 'UserController@showLoginPage');
+Route::post('login', 'UserController@loginHandler');
