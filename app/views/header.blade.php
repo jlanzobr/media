@@ -4,6 +4,7 @@
 			{{ HTML::link(URL::route('/'), 'Home', array('class' => 'btn btn-primary')) }}
 			{{ HTML::link(URL::to('films'), 'Films Directory', array('class' => 'btn btn-primary')) }}
 			{{ HTML::link(URL::to('television'), 'Television Directory', array('class' => 'btn btn-primary')) }}
+			{{ HTML::link(URL::route('logout'), 'Logout', array('class' => 'btn btn-primary')) }}
 		</div>
 	</h1>
 </div>

@@ -49,5 +49,11 @@ class UserController extends BaseController {
 	{
 		return View::make('login');
 	}
+	
+	public function logoutHandler()
+	{
+		Auth::logout();
+		return Redirect::route('login');
+	}
 
 }
