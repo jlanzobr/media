@@ -1,5 +1,11 @@
 @extends('layout')
 
+@if($error = $errors->first())
+	<div class="error">
+		{{ $error }}
+	</div>
+@endif
+
 @section('content')
 	{{ Form::open(array('route' => 'loginHandler', 'method' => 'post')) }}
 		{{ Form::label('username', 'Username') }}
