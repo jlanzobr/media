@@ -1,9 +1,8 @@
 <?php
 
 use Illuminate\Auth\UserInterface;
-use Illuminate\Auth\Reminders\RemindableInterface;
 
-class User extends Eloquent implements UserInterface, RemindableInterface {
+class User extends Eloquent implements UserInterface {
 
 	/**
 	 * The database table used by the model.
@@ -38,17 +37,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	{
 		return $this->password;
 	}
-	
-	/**
-	 * Get the email for the user.
-	 *
-	 * @return string
-	 */
-	public function getReminderEmail()
-	{
-		return $this->email;
-	}
-	
+
 	public function setPasswordAttribute($value)
 	{
 		$this->attributes['password'] = Hash::make($value);
