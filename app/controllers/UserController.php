@@ -21,7 +21,23 @@ class UserController extends BaseController {
 
 		if($validator->passes())
 		{
-			return Redirect::to('/');
+			$credentials = array(
+				"username" => Input::get("username"),
+				"password" => Input::get("password")
+			);
+
+			if(Auth::attempt($credentials))
+			{
+				return Redirect::to('/');
+			}
+			else
+			{
+				$data['errors'] = new MessageBag(array(
+					"invalid_login" => "Username and/or password invalid."
+				));
+			}
+	  
+			
 		}
 		else
 		{
