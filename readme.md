@@ -11,4 +11,5 @@ Add a user to the users table. This can be accomplished by editing database/seed
 ### License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+
 The Media Indexing System is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
