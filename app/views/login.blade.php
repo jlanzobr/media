@@ -1,7 +1,7 @@
 @extends('layout')
 
 @if($error = $errors->first())
-	<div class="error">
+	<div class='error'>
 		{{ $error }}
 	</div>
 @endif

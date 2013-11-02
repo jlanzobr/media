@@ -11,8 +11,13 @@
 |
 */
 
+Route::group(['before' => 'auth'], function()
+{
+	Route::get('/', array('as'=>'/', 'uses'=> 'HomeController@getIndex'));
+});
 
-Route::get('/', array('as'=>'/', 'uses'=> 'HomeController@getIndex'));
-
-Route::get('login', array('as'=>'login', 'uses'=> 'UserController@showLoginPage'));
-Route::post('loginHandler', array('as'=>'loginHandler', 'uses'=> 'UserController@loginHandler'));
+Route::group(['before' => 'guest'], function()
+{
+	Route::get('login', array('as'=>'login', 'uses'=> 'UserController@showLoginPage'));
+	Route::post('loginHandler', array('as'=>'loginHandler', 'uses'=> 'UserController@loginHandler'));
+});

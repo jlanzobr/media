@@ -22,8 +22,8 @@ class UserController extends BaseController {
 		if($validator->passes())
 		{
 			$credentials = array(
-				"username" => Input::get("username"),
-				"password" => Input::get("password")
+				'username' => Input::get('username'),
+				'password' => Input::get('password')
 			);
 
 			if(Auth::attempt($credentials))
@@ -33,11 +33,9 @@ class UserController extends BaseController {
 			else
 			{
 				$data['errors'] = new MessageBag(array(
-					"invalid_login" => "Username and/or password invalid."
+					'invalid_login' => 'Username and/or password invalid.'
 				));
 			}
-	  
-			
 		}
 		else
 		{
@@ -51,5 +49,5 @@ class UserController extends BaseController {
 	{
 		return View::make('login');
 	}
-	
+
 }
