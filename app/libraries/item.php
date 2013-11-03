@@ -6,6 +6,12 @@ class Item
 	* Contents of the directory
 	* @var array
 	*/
+	protected $path = '';
+	
+	/**
+	* Contents of the directory
+	* @var array
+	*/
 	protected $directory_contents = array();
 	
 	/**
@@ -15,21 +21,46 @@ class Item
 	*/
 	protected $items = array();
 
+	/**
+	* Constructor fills $directory_contents and $items
+	*/
 	public function __construct($path = '')
 	{
-		$this->getDirectoryContents($path);
+		$this->setPath($path);
+		$this->scanDirectory();
 		$this->processItems();
 	}
 
-	function getDirectoryContents($path)
+	/**
+	* Set the path
+	* @var string
+	* @return Item
+	*/
+	private function setPath($path)
 	{
-		$raw_directory_contents = scandir($path);
+		$this->path = $path;
+		
+		return $this;
+	}
+	
+	/**
+	* Gets the contents of the directory
+	* @var string
+	* @return Item
+	*/
+	private function scanDirectory()
+	{
+		$raw_directory_contents = scandir($this->path);
 		$this->directory_contents = array_diff($raw_directory_contents, array('..', '.'));
 		
 		return $this;
 	}
 
-	public function processItems()
+	/**
+	* Use the contents of the directory classify file/directory information
+	* @return Item
+	*/
+	private function processItems()
 	{
 		foreach($this->directory_contents as $name)
 		{
@@ -39,7 +70,11 @@ class Item
 		return $this;
 	}
 
-	function getProperties($name)
+	/**
+	* Classify file/directory information
+	* @return Item
+	*/
+	private function getProperties($name)
 	{
 		 # Split $name on either side of year
 		$year_pattern = '/ [(](\d{4})[)]/';
@@ -65,6 +100,24 @@ class Item
 		}
 		
 		return $properties;
+	}
+	
+	/**
+	* Return array of file/directory information arrays
+	* @return array
+	*/
+	public function getItems()
+	{
+		return $this->items;
+	}
+	
+	/**
+	* Return array of files/directories in path
+	* @return array
+	*/
+	public function getDirectoryContents()
+	{
+		return $this->directory_contents;
 	}
 	
 }
