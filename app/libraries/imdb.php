@@ -17,6 +17,8 @@ class IMDB
 	/**
 	* Default IMDB API
 	* Can be either 'omdb' or 'dean_clatworthy'
+	* Note: Dean Clatworthy requests that no more than 30 requests be made to his API per hour,
+	* so if his API is used, the program will wait 120 seconds between requests to it.
 	* @var string
 	*/
 	protected $api = 'omdb';
@@ -93,6 +95,11 @@ class IMDB
 		$data = false;
 		while( ! $data and $retries < 10)
 		{
+			if($this->api === 'dean_clatworthy')
+			{
+				sleep(120);
+			}
+			
 			$data = $this->executeQuery();
 			$retries++;
 		}
