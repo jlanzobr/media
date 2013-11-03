@@ -104,6 +104,12 @@ class IMDB
 				$query_item->imdb_id = $data['imdbID'];
 			}
 		}
+		else
+		{
+			$query_item->description = null;
+			$query_item->rating = null;
+			$query_item->imdb_id = null;
+		}
 		
 		$this->media_object = $query_item;
 		
