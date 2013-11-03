@@ -13,11 +13,11 @@ class Item
 	* Each item is an array containing name, year, and extension (if exists)
 	* @var array
 	*/
-	protected $directory_contents = array();
+	protected $items = array();
 
 	public function __construct($path = '')
 	{
-		$this->directory_contents = $this->getDirectoryContents($path);
+		$this->getDirectoryContents($path);
 		$this->processItems();
 	}
 
@@ -33,7 +33,7 @@ class Item
 	{
 		foreach($this->directory_contents as $name)
 		{
-			$items[] = getProperties($name);
+			$this->items[] = $this->getProperties($name);
 		}
 		
 		return $this;
@@ -58,8 +58,11 @@ class Item
 		
 		# Get year
 		preg_match($year_pattern, $name, $matches);
-		$year = preg_replace("/[^0-9,.]/", "", $matches[0]);
-		$properties['year'] = trim($year);
+		if( ! empty($matches))
+		{
+			$year = preg_replace("/[^0-9,.]/", "", $matches[0]);
+			$properties['year'] = trim($year);
+		}
 		
 		return $properties;
 	}
