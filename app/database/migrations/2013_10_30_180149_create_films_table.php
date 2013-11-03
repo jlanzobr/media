@@ -13,10 +13,11 @@ class CreateFilmsTable extends Migration {
 	{
 		Schema::create('films', function($table){
 			$table->increments('id');
-			$table->string('name');
-			$table->integer('year');
-			$table->decimal('rating', 3, 1);
-			$table->text('description');
+			$table->string('name')->nullable();
+			$table->integer('year')->nullable();
+			$table->string('extension')->nullable();
+			$table->decimal('rating', 3, 1)->nullable();
+			$table->text('description')->nullable();
 			$table->string('imdb_id')->nullable();
 			$table->timestamps();
 		});

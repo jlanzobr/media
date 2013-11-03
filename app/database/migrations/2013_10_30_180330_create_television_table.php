@@ -13,10 +13,10 @@ class CreateTelevisionTable extends Migration {
 	{
 		Schema::create('television', function($table){
 			$table->increments('id');
-			$table->string('name');
-			$table->integer('year');
-			$table->decimal('rating', 3, 1);
-			$table->text('description');
+			$table->string('name')->nullable();
+			$table->integer('year')->nullable();
+			$table->decimal('rating', 3, 1)->nullable();
+			$table->text('description')->nullable();
 			$table->string('imdb_id')->nullable();
 			$table->timestamps();
 		});
