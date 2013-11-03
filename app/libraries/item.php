@@ -1,9 +1,9 @@
-<?php 
+<?php
 
 class Item
 {
 	/**
-	* Contents of the directory
+	* Directory path
 	* @var array
 	*/
 	protected $path = '';
@@ -15,7 +15,7 @@ class Item
 	protected $directory_contents = array();
 	
 	/**
-	* Contents of the directory
+	* Classified contents of the directory
 	* Each item is an array containing name, year, and extension (if exists)
 	* @var array
 	*/
@@ -97,6 +97,10 @@ class Item
 		{
 			$year = preg_replace("/[^0-9,.]/", "", $matches[0]);
 			$properties['year'] = trim($year);
+		}
+		else
+		{
+			$properties['year'] = null;
 		}
 		
 		return $properties;
