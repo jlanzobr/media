@@ -76,9 +76,17 @@ class IMDB
 		{
 			$query_item->year = $this->item['year'];
 		}
+		else
+		{
+			$query_item->year = null;
+		}
 		if( ! empty($item['extension']))
 		{
 			$query_item->extension = $this->item['extension'];
+		}
+		else
+		{
+			$query_item->extension = null;
 		}
 		
 		$retries = 0;
