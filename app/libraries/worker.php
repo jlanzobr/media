@@ -28,8 +28,6 @@ class Worker
 	{
 		$this->setItems();
 		$this->work();
-		
-		
 	}
 	
 	/**
