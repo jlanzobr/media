@@ -15,6 +15,7 @@ Route::group(['before' => 'auth'], function()
 {
 	Route::get('/', array('as'=>'/', 'uses'=> 'HomeController@getIndex'));
 	Route::get('logout', array('as'=>'logout', 'uses'=> 'UserController@logoutHandler'));
+	Route::get('films', array('as'=>'films', 'uses'=> 'MediaController@displayMedia'));
 });
 
 Route::group(['before' => 'guest'], function()
