@@ -52,4 +52,3 @@ class TelevisionWorker extends Worker
 
 $films_worker = new FilmsWorker();
 $television = new TelevisionWorker();
-
