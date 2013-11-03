@@ -1,11 +1,12 @@
 @extends('layout')
+@include('header')
 
 @section('content')
 
 <div class='container'>
 	@if( ! empty($media))
-		<table class="table table-bordered table-hover">
-			<tr>
+		<table class='table table-bordered table-hover'>
+			<tr class='success'>
 				<th>
 					Name
 				</th>
@@ -47,7 +48,7 @@
 					{{ $item->description }}
 				</td>
 				<td>
-					<a class='btn btn-primary' title='Edit' href="{{ URL::to('films' . $item->id) }}">Edit</a>
+					<a class='btn btn-info' title='Edit' href="{{ URL::to('films' . $item->id) }}">Edit</a>
 				</td>
 			</tr>
 			@endforeach
