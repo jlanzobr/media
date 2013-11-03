@@ -4,11 +4,22 @@ use Illuminate\Support\MessageBag;
 
 class MediaController extends BaseController {
 
-	public function displayMedia()
+	public function displayMedia($model)
 	{
-		$title = 'Films';
+		$title = ucfirst($model);
 		
-		return View::make('media')->with('title', $title);
+		
+		$Model = new $model();
+		
+		$media = $Model::all();
+		if(count($media) === 1)
+		{
+			$media = array($media);
+		}
+		
+		return View::make('media')
+			->with('title', $title)
+			->with('media', $media);
 	}
 	
 	public function searchMedia()
