@@ -6,13 +6,13 @@ class Worker
 	* Path to the media directory
 	* @var string
 	*/
-	protected static $directory = '';
+	protected $directory = '';
 	
 	/**
-	* Database Model to use
+	* Database model to use
 	* @var string
 	*/
-	protected static $model = '';
+	protected $model = '';
 	
 	/**
 	* Items to work on
@@ -24,9 +24,12 @@ class Worker
 	* Constructor automatically adds files from $directory to Database $model
 	* @var array
 	*/
-	public function __construct()
+	public function __construct($directory, $model)
 	{
+		$this->setDirectory($directory);
+		$this->setModel($model);
 		$this->setItems();
+		
 		$this->work();
 	}
 	
@@ -43,7 +46,7 @@ class Worker
 			$media_object = $imdb->getMediaObject();
 			if( ! $this->updateRow($media_object))
 			{
-				$DatabaseModel = static::$model;
+				$DatabaseModel = new $this->model;
 				if( ! empty($media_object->extension))
 				{
 					$DatabaseModel::insert(array(
@@ -77,7 +80,7 @@ class Worker
 	*/
 	private function updateRow($media_object)
 	{	
-		$DatabaseModel = static::$model;
+		$DatabaseModel = new $this->model;
 		
 		if( ! empty($media_object->imdb_id))
 		{
@@ -115,15 +118,37 @@ class Worker
 	}
 	
 	/**
-	* Return array of file/directory information arrays
+	* Scan the media directory and populate $items with its contents
 	* @return array
 	*/
 	private function setItems()
 	{
-		$working_directory = static::$directory;
+		$working_directory = $this->directory;
 		$media = new Item($working_directory);
 		$this->items = $media->getItems();
 		unset($media);
+		
+		return $this;
+	}
+	
+	/**
+	* Set the path to the media directory
+	* @return array
+	*/
+	private function setDirectory($directory)
+	{
+		$this->directory = $directory;
+		
+		return $this;
+	}
+	
+	/**
+	* Set the database model to use
+	* @return array
+	*/
+	private function setModel($model)
+	{
+		$this->model = $model;
 		
 		return $this;
 	}
