@@ -51,6 +51,7 @@
 		</table>
 		<fieldset>
 			<div class="form-group">
+			{{ Form::label('imdb_id', 'IMDB ID:') }}
 			{{ Form::text('imdb_id', Input::old('imdb_id'), array('class' => 'input', 'placeholder' => $item->imdb_id)) }}
 			</div>
 			{{ Form::submit('Update',  array('class' => 'btn btn-success')) }}
