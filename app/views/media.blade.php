@@ -57,7 +57,7 @@
 								{{ $item->description }}
 							</td>
 							<td>
-								<a class='btn btn-info' title='Edit' href="{{ URL::to('films' . $item->id) }}">Edit</a>
+								<a class='btn btn-info' title='Edit' href="{{ URL::to('edit/'.get_class($item).'/'.$item->id) }}">Edit</a>
 							</td>
 						</tr>
 					@endforeach

@@ -8,7 +8,6 @@ class MediaController extends BaseController {
 	{
 		$title = ucfirst($model);
 		
-		
 		$Model = new $model();
 		
 		$media = $Model::all();
@@ -47,6 +46,24 @@ class MediaController extends BaseController {
 		return View::make('media')
 			->with('title', $title)
 			->with('results', $results);
+	}
+	
+	public function editMediaItem($model, $id)
+	{
+		$title = 'Edit '.ucfirst($model);
+		
+		$Model = new $model();
+		
+		$item = $Model::find($id);
+		
+		return View::make('edit')
+			->with('title', $title)
+			->with('item', $item);
+	}
+	
+	public function saveMediaItem()
+	{
+		//
 	}
 	
 }

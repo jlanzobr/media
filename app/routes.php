@@ -15,9 +15,10 @@ Route::group(['before' => 'auth'], function()
 {
 	Route::get('/', array('as'=>'/', 'uses'=> 'HomeController@getIndex'));
 	Route::get('logout', array('as'=>'logout', 'uses'=> 'UserController@logoutHandler'));
-	Route::get('films', array('as'=>'films', 'uses'=> 'MediaController@displayMedia'));
 	Route::get('media/{model}', array('uses'=> 'MediaController@displayMedia'));
 	Route::post('search', array('as'=>'search',  'uses'=> 'MediaController@searchMedia'));
+	Route::get('edit/{model}/{id}', array('uses'=> 'MediaController@editMediaItem'));
+	Route::post('update', array('as'=>'update',  'uses'=> 'MediaController@saveMediaItem'));
 });
 
 Route::group(['before' => 'guest'], function()
