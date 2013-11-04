@@ -63,7 +63,16 @@ class MediaController extends BaseController {
 	
 	public function saveMediaItem()
 	{
-		//
+		$imdb_id = Input::get('imdb_id');
+		$id = Input::get('id');
+		$model = Input::get('model');
+		
+		$Model = new $model;
+		$item = $Model::find($id);
+		$item->imdb_id = $imdb_id;
+		$item->save();
+		
+		return Redirect::back();
 	}
 	
 }

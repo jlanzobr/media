@@ -53,6 +53,8 @@
 			<div class="form-group">
 			{{ Form::label('imdb_id', 'IMDB ID:') }}
 			{{ Form::text('imdb_id', Input::old('imdb_id'), array('class' => 'input', 'placeholder' => $item->imdb_id)) }}
+			{{ Form::hidden('id', $item->id) }}
+			{{ Form::hidden('model', get_class($item)) }}
 			</div>
 			{{ Form::submit('Update',  array('class' => 'btn btn-success')) }}
 		</fieldset>
