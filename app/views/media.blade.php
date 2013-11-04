@@ -20,7 +20,7 @@
 						<th>
 							Year
 						</th>
-						@if( ! empty($media[0]->extension))
+						@if(get_class($media[0]) !== 'Television')
 						<th>
 							Extension
 						</th>
@@ -45,7 +45,7 @@
 							<td>
 								{{ $item->year }}
 							</td>
-							@if( ! empty($media[0]->extension))
+							@if(get_class($item) !== 'Television')
 							<td>
 								{{ $item->extension }}
 							</td>
