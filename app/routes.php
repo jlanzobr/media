@@ -17,6 +17,7 @@ Route::group(['before' => 'auth'], function()
 	Route::get('logout', array('as'=>'logout', 'uses'=> 'UserController@logoutHandler'));
 	Route::get('films', array('as'=>'films', 'uses'=> 'MediaController@displayMedia'));
 	Route::get('media/{model}', array('uses'=> 'MediaController@displayMedia'));
+	Route::post('search', array('as'=>'search',  'uses'=> 'MediaController@searchMedia'));
 });
 
 Route::group(['before' => 'guest'], function()
