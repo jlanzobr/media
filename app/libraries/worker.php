@@ -6,6 +6,24 @@ class Worker
 	* Path to the media directory
 	* @var string
 	*/
+	protected $start_time = null;
+	
+	/**
+	* Current item being processed
+	* @var string
+	*/
+	protected $current_item = null;
+	
+	/**
+	* Number of items to be processed
+	* @var string
+	*/
+	protected $total_items = null;
+	
+	/**
+	* Path to the media directory
+	* @var string
+	*/
 	protected $directory = '';
 	
 	/**
@@ -29,6 +47,7 @@ class Worker
 		$this->setDirectory($directory);
 		$this->setModel($model);
 		$this->setItems();
+		$this->initializeStatistics();
 		
 		$this->work();
 	}
@@ -70,6 +89,7 @@ class Worker
 				}
 			}
 			
+			$this->updateProgress();
 		}
 	}
 
@@ -160,6 +180,34 @@ class Worker
 	public function getItems()
 	{
 		return $this->items;
+	}
+	
+	/**
+	* Write the progress of the worker to the console
+	* @return void
+	*/
+	public function initializeStatistics()
+	{
+		$this->start_time = microtime(true);
+		$this->current_item = 0;
+		$this->total_items = count($this->items);
+		
+		return $this;
+	}
+	
+	/**
+	* Write the progress of the worker to the console
+	* @return void
+	*/
+	public function updateProgress()
+	{
+		$this->current_item = $this->current_item + 1;
+		$time_elapsed = microtime(true) - $this->start_time;
+		$progress_percent = round(($this->current_item / $this->total_items) * 100, 3);
+		$progress = $progress_percent."% Complete    Time Elapsed: ".round($time_elapsed, 3)." seconds \r";
+		fputs(STDOUT, $progress);
+		
+		return $this;
 	}
 
 }
