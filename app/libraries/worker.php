@@ -68,24 +68,22 @@ class Worker
 				$DatabaseModel = new $this->model;
 				if( ! empty($media_object->extension))
 				{
-					$DatabaseModel::insert(array(
-						'name' => $media_object->name,
-						'year' => $media_object->year,
-						'extension' => $media_object->extension,
-						'description' => $media_object->description,
-						'rating' => $media_object->rating,
-						'imdb_id' => $media_object->imdb_id
-					));
+					$DatabaseModel->name = $media_object->name;
+					$DatabaseModel->year = $media_object->year;
+					$DatabaseModel->extension = $media_object->extension;
+					$DatabaseModel->description = $media_object->description;
+					$DatabaseModel->rating = $media_object->rating;
+					$DatabaseModel->imdb_id = $media_object->imdb_id;
+					$DatabaseModel->save();
 				}
 				else
 				{
-					$DatabaseModel::insert(array(
-						'name' => $media_object->name,
-						'year' => $media_object->year,
-						'description' => $media_object->description,
-						'rating' => $media_object->rating,
-						'imdb_id' => $media_object->imdb_id
-					));
+					$DatabaseModel->name = $media_object->name;
+					$DatabaseModel->year = $media_object->year;
+					$DatabaseModel->description = $media_object->description;
+					$DatabaseModel->rating = $media_object->rating;
+					$DatabaseModel->imdb_id = $media_object->imdb_id;
+					$DatabaseModel->save();
 				}
 			}
 			
