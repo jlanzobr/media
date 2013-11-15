@@ -10,6 +10,10 @@ Add a user to the users table. This can be accomplished by editing database/seed
 
 Specify the paths to your media directories in app/tasks/worker.php. Note that media must be of the format: Media Title (year).extension. The extension is optional. For example,  Man Of Steel (2013).mkv,  Man Of Steel (2013),  and Man of Steel.mkv are all valid. Then, execute the worker by changing to the app's root directory and executing "php app/tasks/worker.php" or adding it to cron.
 
+## Updating
+
+Run "./update.sh" to update the local database and the Laravel backend.
+
 ### License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
