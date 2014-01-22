@@ -1,4 +1,4 @@
 #!/bin/sh
-php app/tasks/worker.php
+php artisan worker:run
 php composer.phar self-update
 php composer.phar update
